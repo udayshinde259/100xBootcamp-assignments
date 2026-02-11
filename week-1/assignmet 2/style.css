@@ -1,0 +1,158 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+
+.layout{
+    min-height: 100vh;
+    display: flex;
+
+}
+
+
+.sidebar{
+    flex: 1;
+    background-color: black;
+    color: white;
+    height: auto;
+    display: flex;  
+    justify-content: space-around;
+    padding-left: 20px;
+    
+}
+
+#logo-div{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.sidebar p,
+.sidebar h1 {
+    margin-bottom: 30px;
+}
+
+
+#info-div{
+    display: flex;
+    flex-direction: column;
+}
+
+a{
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: large;
+}
+
+#logo-info{
+    color: #6E6E6E;
+}
+
+h1{
+    font-weight: 500;
+    font-size: 3rem;
+}
+
+
+
+
+.sidebar-content{
+    flex: 1;
+    background-color: white;  
+    height: auto;
+    display: flex;  
+    justify-content: center;
+    align-items: center;
+}
+
+#form-title{
+    font-size: 2.5rem;
+    font-weight: 400;
+}
+
+#form-instruction{
+    color: gray;
+}
+
+#form-div{
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+
+}
+
+input{
+    font-size:medium;
+    height: 35px;
+    width: 100%;
+    max-width: 500px;
+    padding: 5px;
+    margin: 10px 0 30px;
+    border-radius: 10px;
+    border: 1px solid rgb(231 229 228);
+}
+input:focus{
+    outline: none;
+    border-color: black;
+}
+
+#next-btn{
+    font-size: large;
+    color: white;
+    background-color: #6E6E6E;
+    border: 0;
+    height: 2.5rem;
+    width: fit-content;
+    padding: 0px 16px;
+    border-radius: 20px;
+}
+
+#btn-div{
+    width: 100%;
+    max-width: 550px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#line-div{
+    width: 100%;
+    max-width: 240px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.line{
+    height: 4px;
+    width: 100%;
+    max-width: 74px;
+    background-color: #D6D4D1;
+    border-radius: 2px;
+}
+
+#first-line{
+    background-color: black;
+}
+
+
+@media (max-width: 768px) {
+    .layout {
+        flex-direction: column;
+    }
+
+    .sidebar,
+    .sidebar-content {
+        width: 100%;
+        padding: 24px;
+    }
+}
