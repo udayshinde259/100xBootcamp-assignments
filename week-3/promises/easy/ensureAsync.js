@@ -8,8 +8,7 @@ function ensureAsync(fn) {
         return new Promise((resolve, reject)=>{
             try {
                 const ans = fn(...args);
-                resolve(ans);
-                
+                resolve(ans); 
             } catch (error) {
                 reject(error)
             }
