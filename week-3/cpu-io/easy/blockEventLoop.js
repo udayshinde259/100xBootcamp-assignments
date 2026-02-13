@@ -11,13 +11,6 @@
 // 2. Use a `while` loop with `Date.now()` or `performance.now()`.
 // 3. This is a teaching tool to show how NOT to write async code.
 
-function blockEventLoop(ms) {
-    let now = Date.now();
-    let final =  Date.now()+ms;
-
-    while(now<=final){
-        now = Date.now();
-    }
-}
+function blockEventLoop(ms) {}
 
 module.exports = blockEventLoop;
