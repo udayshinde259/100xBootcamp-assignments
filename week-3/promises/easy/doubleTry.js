@@ -9,7 +9,9 @@
 // // If the second attempt fails, reject with the error.
 
 async function doubleTry(fn) {
-    
+    return new Promise((resolve, reject) => {
+        
+    })
 }
 
 module.exports = doubleTry;
