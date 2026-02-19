@@ -1,4 +1,3 @@
-
 // // Problem Description – Double Try (Basic Retry)
 // //
 // // You are given an async function fn that may fail.
@@ -9,9 +8,21 @@
 // // If the second attempt fails, reject with the error.
 
 async function doubleTry(fn) {
-    return new Promise((resolve, reject) => {
-        
-    })
+  return new Promise((resolve, reject) => {
+    fn()
+      .then((data) => {
+        resolve(data);
+      })
+      .catch((err) => {
+        fn()
+          .then((data) => {
+            resolve(data);
+          })
+          .catch((err) => {
+            reject(err);
+          });
+      });
+  });
 }
 
 module.exports = doubleTry;
