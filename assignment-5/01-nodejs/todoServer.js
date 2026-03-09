@@ -46,8 +46,92 @@
   
   app.use(bodyParser.json());
 
-  app.use("/todos", function(req, res){
-    
+  let todos = [];
+
+
+
+  app.get("/todos", function(req, res){
+    res.json(todos);
   })
+
+  app.get("/todos/:id", function(req, res){
+    let id = req.params.id;
+    let todo = null;
+
+    for(let i=0;i<todos.length;i++){
+      if(todos[i].id == id){
+        todo = todos[i];
+      }
+    }
+
+    if(todo){
+      res.json(todo);
+    }else{
+      res.status(404).json({"error": "Todo not found"});
+    }
+
+  })
+
+  app.post("/create/todos", function(req, res){
+    let {title, completed, description} = req.body;
+    let id = todos.length;
+
+    let newTodo = {
+      id: id,
+      title: title,
+      completed: completed,
+      description: description
+    }
+
+    todos.push(newTodo);
+   res.status(201).json({ id: newTodo.id });
+  })
+
+  app.put("/todos/:id", function(req, res){
+    let id = req.params.id;
+
+    let {title, completed } = req.body;
+
+    let present = false;
+
+    for(let i=0;i<todos.length;i++){
+      if(todos[i].id == id){
+        present = true;
+      }
+    }
+
+    if(present){
+      todos[id].title = title;
+      todos[id].completed = completed;
+
+      res.status(200).send("Todo updated sucessfully");
+    }else{
+      res.status(404).json({"error": "Todo not found"});
+    }
+  })
+
+
+  app.delete("/todos", function(req, res){
+    let id = req.query.id;
+
+    let present = false;
+
+    for(let i=0;i<todos.length;i++){
+      if(todos[i].id == id){
+        present = true;
+      }
+    }
+
+    if(present){
+      todos.splice(id, 1);
+      for(let i=id;i<todos.length;i++){
+      todos[i].id = i;
+      }
+      res.status(200).send("Todo is deleted sucessfully");
+    }else{
+      res.status(404).json({"error": "Todo not found"});
+    }
+  })
+
   
   module.exports = app;
